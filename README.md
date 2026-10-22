@@ -159,7 +159,7 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 - **技術標籤**（空白分隔 2～5 個，只從固定清單挑，詞彙發散會讓篩選失效）：
   `three.js` `WebGL` `shader` `GSAP` `Canvas` `SVG` `CSS動畫` `React` `Vue` `p5.js`
   `Phaser` `Unity` `Godot` `地圖` `LLM` `RAG` `Agent` `ClaudeCode` `資安` `影像生成` `語音`
-  `開源` `可直接跑` `教學文` `要付費`
+  `配色` `開源` `可直接跑` `教學文` `要付費`
 - **能用在哪**：一句話寫「這招可以用在你的哪種課程／展示」。想不出來就留空，不硬掰。
 - **縮圖**：貼文畫面的截圖，存在 `shots/<貼文ID>.jpg`，欄位填這個相對路徑。
   靠畫面回想「這是哪一篇」比讀標題快很多，所以每筆都會截。載不出來時卡片會自動隱藏圖片區，不留破圖。
