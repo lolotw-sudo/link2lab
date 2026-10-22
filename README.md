@@ -142,7 +142,7 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 
 ## 資料欄位
 
-「靈感」分頁：`標題 / 一句話 / 分類 / 技術標籤 / GitHub / 星數 / 主要語言 / Demo / 原文連結 / 來源 / 能用在哪 / 收錄日期`
+「靈感」分頁：`標題 / 一句話 / 分類 / 技術標籤 / GitHub / 星數 / 主要語言 / Demo / 原文連結 / 來源 / 能用在哪 / 縮圖 / 收錄日期`
 
 - **分類**（單選）：`旅遊` `前端視覺` `遊戲開發` `AI 應用` `資料視覺化` `開發工具`
 - **技術標籤**（空白分隔 2～5 個，只從固定清單挑，詞彙發散會讓篩選失效）：
@@ -150,6 +150,8 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
   `Phaser` `Unity` `Godot` `地圖` `LLM` `RAG` `Agent` `ClaudeCode` `資安` `影像生成` `語音`
   `開源` `可直接跑` `教學文` `要付費`
 - **能用在哪**：一句話寫「這招可以用在你的哪種課程／展示」。想不出來就留空，不硬掰。
+- **縮圖**：貼文畫面的截圖，存在 `shots/<貼文ID>.jpg`，欄位填這個相對路徑。
+  靠畫面回想「這是哪一篇」比讀標題快很多，所以每筆都會截。載不出來時卡片會自動隱藏圖片區，不留破圖。
 
 ## 目前的限制（先講清楚）
 
@@ -170,5 +172,6 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 | `index.html` | 靈感庫網頁，讀 CSV。純新增資料不用改它 |
 | `apps-script.gs` | 後端端點程式碼，貼進 Apps Script 用 |
 | `sample-data.csv` | 12 筆示範資料，本機試玩／改版後回歸測試用 |
-| `demo-real.csv` | 跑過一則真實 Threads 貼文的結果，第一筆就是它（示範用，可刪） |
+| `demo-real.csv` | 跑過四則真實 Threads 貼文的結果（示範用，可刪） |
+| `shots/` | 每則貼文的畫面截圖，檔名是貼文 ID |
 | `~/.claude/skills/link2lab/SKILL.md` | 我處理待處理分頁時遵循的流程與萃取規範 |

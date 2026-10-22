@@ -57,6 +57,10 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;
   box-shadow:var(--shadow);display:flex;flex-direction:column;gap:9px}
 .card h2{font-size:1.18rem;margin:0;line-height:1.4}
+/* 縮圖：靠畫面回想「這是哪一篇」比讀標題快。載不出來時整塊隱藏，不留破圖 */
+.shot{display:block;margin:-16px -16px 2px;border-radius:14px 14px 0 0;overflow:hidden;
+  background:var(--bg);border-bottom:1px solid var(--line);aspect-ratio:4/3}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .summary{margin:0;font-size:.98rem}
 .meta{display:flex;flex-wrap:wrap;gap:5px;font-size:.85rem;color:var(--muted)}
 .meta span{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:3px 9px}
@@ -148,7 +152,8 @@ fetch(csvSrc)
       title:(r[0]||'').trim(), summary:(r[1]||'').trim(), category:(r[2]||'').trim(),
       tags:(r[3]||'').trim(), repo:(r[4]||'').trim(), stars:(r[5]||'').trim(),
       lang:(r[6]||'').trim(), demo:(r[7]||'').trim(), url:(r[8]||'').trim(),
-      source:(r[9]||'').trim(), use:(r[10]||'').trim(), added:(r[11]||'').trim()
+      source:(r[9]||'').trim(), use:(r[10]||'').trim(), shot:(r[11]||'').trim(),
+      added:(r[12]||'').trim()
     })).filter(x=>x.title);
     // 空資料庫是正常狀態（還沒收藏），不是錯誤——不要顯示成讀取失敗
     if(!ALL.length){
@@ -251,7 +256,12 @@ function card(r){
   if(r.demo) links.push('<a class="demo" href="'+esc(r.demo)+'" target="_blank" rel="noopener noreferrer">▶ 線上 Demo</a>');
   if(r.url) links.push('<a href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer">📄 原文</a>');
 
-  return '<article class="card">'+
+  // 縮圖點下去＝開原文（回想得起來就想馬上點進去看）
+  const shotHtml = r.shot ? '<a class="shot" href="'+esc(r.url||r.demo||'#')+'" target="_blank" '+
+      'rel="noopener noreferrer"><img src="'+esc(r.shot)+'" alt="" loading="lazy" '+
+      'onerror="this.closest(\'.shot\').remove()"></a>' : '';
+
+  return '<article class="card">'+ shotHtml +
     '<h2>'+esc(r.title)+(isNew(r.added)?'<span class="new-badge">新收藏</span>':'')+'</h2>'+
     (r.summary?'<p class="summary">'+esc(r.summary)+'</p>':'')+
     (meta.length?'<div class="meta">'+meta.map(m=>'<span>'+esc(m)+'</span>').join('')+'</div>':'')+

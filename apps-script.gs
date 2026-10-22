@@ -18,7 +18,7 @@ const ITEM_SHEET = '靈感';
 
 const INBOX_HEADER = ['時間戳記', '文章連結', '狀態'];
 const ITEM_HEADER = ['標題', '一句話', '分類', '技術標籤', 'GitHub', '星數', '主要語言',
-  'Demo', '原文連結', '來源', '能用在哪', '收錄日期'];
+  'Demo', '原文連結', '來源', '能用在哪', '縮圖', '收錄日期'];
 
 function doGet(e) {
   const token = e.parameter.token || '';
@@ -62,7 +62,7 @@ function doGet(e) {
       return {
         row: i + 2, title: r[0], summary: r[1], category: r[2], tags: r[3],
         repo: r[4], stars: r[5], lang: r[6], demo: r[7], url: r[8],
-        source: r[9], use: r[10], added: r[11]
+        source: r[9], use: r[10], shot: r[11], added: r[12]
       };
     });
     return json_(rows);
@@ -77,7 +77,7 @@ function doGet(e) {
       sanitize_(p.title || ''), sanitize_(p.summary || ''), sanitize_(p.category || ''),
       sanitize_(p.tags || ''), sanitize_(p.repo || ''), sanitize_(p.stars || ''),
       sanitize_(p.lang || ''), sanitize_(p.demo || ''), sanitize_(p.url || ''),
-      sanitize_(p.source || ''), sanitize_(p.use || ''), added
+      sanitize_(p.source || ''), sanitize_(p.use || ''), sanitize_(p.shot || ''), added
     ]);
     return out_('ok');
   }
