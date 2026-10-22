@@ -248,7 +248,9 @@ function card(r){
   if(r.source) meta.push('📱 '+r.source);
   if(ts(r.added)) meta.push('📌 '+new Date(ts(r.added))
     .toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'})+' 收藏');
-  splitTags(r.tags).forEach(t=>meta.push('#'+t));
+  // 標籤不印在卡片上（使用者：在這邊比較不重要）——
+  // 資料照存，搜尋與上方篩選鈕仍然吃得到，想顯示就把下一行取消註解
+  // splitTags(r.tags).forEach(t=>meta.push('#'+t));
 
   const links=[];
   if(r.repo) links.push('<a class="gh" href="'+esc(r.repo)+'" target="_blank" rel="noopener noreferrer">⌨ 原始碼'+
