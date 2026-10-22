@@ -1,0 +1,6 @@
+.DS_Store
+.claude/
+
+# 若日後把含密語的設定另存成本機檔案，一律放這裡，不要進版控
+*.local.gs
+*.local.json
