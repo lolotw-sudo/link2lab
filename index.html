@@ -107,9 +107,9 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 <script>
 // 資料來源：Google 試算表「靈感」分頁發布為 CSV 的網址。
 // 本機測試可用 ?csv=<網址或相對路徑> 覆蓋，不必改這行。
-// 還沒接上 Google 試算表之前，先讀同目錄的 data.csv（Claude 整理後會更新它）。
-// 等試算表「靈感」分頁發布成 CSV 後，把下面換成那條 pub?...output=csv 網址即可。
-const CSV_URL = 'data.csv';
+// 資料來源：Google 試算表「靈感」分頁發布的 CSV（新增資料後網頁自動反映，免重新部署）。
+// 本機測試可用 ?csv=data.csv 或 ?csv=sample-data.csv 覆蓋，不必改這行。
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTCdnelrF3aJhu_1bha3e4YVasZd3_AHaxDTMRTOyrbqDADUIbn26jfftaVHHXyFp-7qUAFa8Devijx/pub?gid=958560926&single=true&output=csv';
 
 const CAT_EMOJI = {旅遊:'✈️', 前端視覺:'✨', 遊戲開發:'🎮', 'AI 應用':'🤖', AI應用:'🤖',
   資料視覺化:'📊', 開發工具:'🛠'};
