@@ -37,7 +37,7 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 ## 設定步驟
 
 以下 7 步**需要你本人的 Google／GitHub 帳號**，我沒有權限代做。每步都附「做對了會看到什麼」。
-全部做完，把最後那三個值告訴我，我補進設定檔就能開始跑。
+全部做完，把最後那幾個值告訴我（清單在文末），我補進設定檔就能開始跑。
 
 ## 1. 建試算表
 
@@ -54,9 +54,9 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 1. 在剛才的試算表：上方選單 **擴充功能 → Apps Script**
 2. 把編輯器裡原有的 `function myFunction() {}` 整個刪掉
 3. 打開本專案的 [apps-script.gs](apps-script.gs)，**全部複製貼上**
-4. 改**最上面兩行**：
+4. 在編輯器裡**搜尋 `SS_ID`**，改它和下一行的 `SECRET`（約在第 12、13 行，前面都是註解）：
    - `SS_ID` ← 填第 1 步的 fileId
-   - `SECRET` ← 自己想一個密語（例 `MYLAB2026`），跟另外兩個專案的要不一樣
+   - `SECRET` ← 自己想一個密語（**不要直接照抄範例** `MYLAB2026`），跟另外兩個專案的也要不一樣
 5. 存檔（Cmd+S）
 6. 右上角 **部署 → 新增部署作業** → 齒輪選 **網頁應用程式**
    - 執行身分：**我**
@@ -91,16 +91,23 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 
 ## 5. 把 CSV 網址填進網頁
 
-打開 [index.html](index.html)，搜尋 `CSV_URL` 找到那一行，把引號內換成第 4 步的網址。
-（這步你也可以交給我做——把網址給我就行。）
+**這步直接把網址貼給我，我幫你改**——你不用碰程式碼。
+
+想自己改也可以：用純文字編輯器（Mac 內建「文字編輯」或 VS Code）打開 [index.html](index.html)，
+搜尋 `CSV_URL`，把那一行引號內的「請貼上發布後的 CSV 網址」整串換成第 4 步的網址，存檔。
+
+✅ 做對了：用瀏覽器直接打開 index.html（網址列**不要**加 `?csv=`），
+看得到你試算表裡的資料；還沒收藏任何東西時會顯示「📭 還沒有收藏任何靈感」（這也是對的）。
 
 ## 6. 上線網頁（GitHub Pages）
 
-> ⚠️ **只上傳 `index.html` 這一個檔案。**`apps-script.gs` 裡若填了你的密語，
-> 上傳到 Public repo 等於把寫入權公開，別人就能亂寫你的試算表。
+> ⚠️ **唯一的禁忌：不要把填了真實密語的 `apps-script.gs` 上傳。**
+> 密語等於你試算表的寫入權，進了 Public repo 別人就能亂寫。
+> 本專案版控的是**佔位符版本**（第 2 步你是在 Google 的編輯器裡填真值，本機這份不用動），
+> 所以整個資料夾上傳是安全的；但你如果自己在本機填過真值，就只上傳 `index.html`。
 
 1. 到 https://github.com/new 建 repo，名稱 `link2lab`，選 **Public**
-2. 進 repo → **Add file → Upload files** → 把 `index.html` 拖進去 → Commit
+2. 進 repo → **Add file → Upload files** → 把 `index.html`（和其他檔案）拖進去 → Commit
 3. repo 的 **Settings → Pages** → Source 選 `Deploy from a branch`，分支選 `main`／`/(root)` → Save
 4. 等一兩分鐘，網址是 `https://<你的帳號>.github.io/link2lab/`
 
@@ -120,11 +127,13 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 
 ---
 
-## 做完後告訴我這三個值
+## 做完後把這幾個值給我
 
 1. 試算表 fileId
-2. Apps Script 端點網址 + 你設的密語
-3. CSV 發布網址、GitHub Pages 網址
+2. Apps Script 端點網址
+3. 你設的密語
+4. CSV 發布網址
+5. GitHub Pages 網址
 
 我會補進 `~/.claude/skills/link2lab/SKILL.md` 的「固定資源」，之後你只要說
 **「跑 link2lab」**，我就會去讀待處理分頁、抓原文、萃取重點、補星數、寫進試算表。

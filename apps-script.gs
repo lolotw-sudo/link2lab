@@ -8,7 +8,7 @@
 
 // ⬇⬇⬇ 只有這兩行要改 ⬇⬇⬇
 // 這是公開版本，實際值不寫在這裡（會外洩寫入權）。
-// LOLO 的實際設定值記在本機 ~/.claude/skills/link2lab/SKILL.md 的「固定資源」。
+// 實際值只填在 Google 的 Apps Script 編輯器裡，本機這份永遠保持佔位符。
 const SS_ID = '請填入你的試算表 ID';   // 網址 /d/ 和 /edit 中間那一長串
 const SECRET = '請自己改一個密語';      // 英數字、無空格，例如 MYLAB2026
 // ⬆⬆⬆ 只有這兩行要改 ⬆⬆⬆
