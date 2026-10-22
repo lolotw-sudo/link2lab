@@ -147,7 +147,7 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 - **分類**（單選）：`旅遊` `前端視覺` `遊戲開發` `AI 應用` `資料視覺化` `開發工具`
 - **技術標籤**（空白分隔 2～5 個，只從固定清單挑，詞彙發散會讓篩選失效）：
   `three.js` `WebGL` `shader` `GSAP` `Canvas` `SVG` `CSS動畫` `React` `Vue` `p5.js`
-  `Phaser` `Unity` `Godot` `地圖` `LLM` `RAG` `Agent` `影像生成` `語音`
+  `Phaser` `Unity` `Godot` `地圖` `LLM` `RAG` `Agent` `Claude Code` `資安` `影像生成` `語音`
   `開源` `可直接跑` `教學文` `要付費`
 - **能用在哪**：一句話寫「這招可以用在你的哪種課程／展示」。想不出來就留空，不硬掰。
 
