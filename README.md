@@ -1,5 +1,10 @@
 # link2lab 技術靈感庫
 
+> **上線網址：https://lolotw-sudo.github.io/link2lab/** （2026-10-22 部署，已實測開得起來）
+> 目前讀 repo 裡的 `data.csv`（4 筆真實收藏）。接上 Google 試算表後改讀發布的 CSV，網頁就會自動更新。
+>
+> 進度：✅ 步驟 6（GitHub Pages）已完成 ｜ ⬜ 步驟 1～5（試算表與端點）、步驟 7（iOS 捷徑）待做
+>
 > 把滑到的 AI／前端／遊戲／旅遊技術文章，用手機分享一下就收進可搜尋的靈感庫，
 > **有附 GitHub 原始碼的會自動標出星數與語言**。
 >
@@ -91,6 +96,9 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 
 ## 5. 把 CSV 網址填進網頁
 
+> 現況：`CSV_URL` 已指向 repo 裡的 `data.csv`，網站現在就能看。
+> 等第 4 步的發布網址出來，把它換掉即可（交給 Claude 做）。
+
 **這步直接把網址貼給我，我幫你改**——你不用碰程式碼。
 
 想自己改也可以：用純文字編輯器（Mac 內建「文字編輯」或 VS Code）打開 [index.html](index.html)，
@@ -99,7 +107,10 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 ✅ 做對了：用瀏覽器直接打開 index.html（網址列**不要**加 `?csv=`），
 看得到你試算表裡的資料；還沒收藏任何東西時會顯示「📭 還沒有收藏任何靈感」（這也是對的）。
 
-## 6. 上線網頁（GitHub Pages）
+## 6. 上線網頁（GitHub Pages）✅ 已完成
+
+> 這步 Claude 用 `gh` CLI 代做完了：repo `lolotw-sudo/link2lab`（Public）、Pages 部署 main/root、
+> 網址 https://lolotw-sudo.github.io/link2lab/ 。以下保留原始步驟供日後參考。
 
 > ⚠️ **唯一的禁忌：不要把填了真實密語的 `apps-script.gs` 上傳。**
 > 密語等於你試算表的寫入權，進了 Public repo 別人就能亂寫。
