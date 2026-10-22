@@ -155,6 +155,9 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 
 - **Threads 只對爬蟲 UA 吐內容**：用一般瀏覽器 UA 抓回來是空殼（實測 2026-10-22），
   skill 裡已改用 `facebookexternalhit` UA，這點跟 reel2recipe 不同。
+- **Threads 貼文的連結常常抓不到**（實測）：curl 只拿得到貼文**文字**，拿不到附件連結；
+  很多人的連結是放在影片畫面裡或留言區。遇到這種我會去開貼文的 `/embed` 頁（不用登入）、
+  必要時讀影片畫面上的網站名稱，**再 curl 那個網站確認存在才採用**，確認不了就留空問你。
 - **Medium 會擋機器抓取**（實測回 403）。遇到 Medium 連結我會標成「待確認」並請你貼內文，
   **不會憑標題猜內容編一筆給你**。
 - **星數是收錄當下的快照**，不會自動長。要回補時跟我說「更新 link2lab 星數」。
@@ -167,4 +170,5 @@ cd /Users/lolo/Claude/Projects/link2lab && python3 -m http.server 8793
 | `index.html` | 靈感庫網頁，讀 CSV。純新增資料不用改它 |
 | `apps-script.gs` | 後端端點程式碼，貼進 Apps Script 用 |
 | `sample-data.csv` | 12 筆示範資料，本機試玩／改版後回歸測試用 |
+| `demo-real.csv` | 跑過一則真實 Threads 貼文的結果，第一筆就是它（示範用，可刪） |
 | `~/.claude/skills/link2lab/SKILL.md` | 我處理待處理分頁時遵循的流程與萃取規範 |
